@@ -1,6 +1,8 @@
 package rendering;
 
+import utility.Frame;
 import utility.KeyHandler;
+import utility.Square;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -18,14 +20,16 @@ public class Panel extends JPanel implements Runnable {
     private final int fps = 60;
 
     /**Screen Width and Height */
-    private final int screenWidth = 800;
-    private final int screenHeight = 600;
+    private static final int screenWidth = 800;
+    private static final int screenHeight = 600;
 
     /** Main thread */
     private Thread gameThread;
 
     /** Handles keyboard input */
     private final KeyHandler keyH = new KeyHandler();
+
+    private Frame frame = new Frame(10);
 
     /**
      * Constructs a new Panel and initializes the game settings.
@@ -37,6 +41,14 @@ public class Panel extends JPanel implements Runnable {
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
+    }
+
+    public static int getScreenWidth() {
+        return screenWidth;
+    }
+
+    public static int getScreenHeight() {
+        return screenHeight;
     }
 
     /**
@@ -96,6 +108,7 @@ public class Panel extends JPanel implements Runnable {
         Graphics2D g2 = (Graphics2D) g;
 
         // Draw things here
+        for (Square square : frame) square.draw(g2);
 
         g2.dispose();
     }
