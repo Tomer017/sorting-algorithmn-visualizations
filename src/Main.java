@@ -12,7 +12,7 @@ public class Main {
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        window.setTitle("Untitled Project");
+        window.setTitle("Sorting Algorithmn Visualizations");
 
         Panel panel = new Panel();
         window.add(panel);

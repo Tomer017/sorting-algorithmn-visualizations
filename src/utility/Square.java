@@ -1,8 +1,12 @@
 package utility;
 
+import java.awt.*;
+
 public class Square {
     private final int height;
     private final int width;
+    private int x;
+    private int y;
 
     public Square(int height, int width){
         this.height = height;
@@ -15,5 +19,10 @@ public class Square {
 
     public int getHeight() {
         return height;
+    }
+
+    public void draw(Graphics2D g2d) {
+        // To be implemented
+
     }
 }
