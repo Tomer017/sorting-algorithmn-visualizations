@@ -3,16 +3,14 @@ package rendering;
 import utility.Frame;
 import utility.KeyHandler;
 import utility.Square;
+import main.Main;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
- * Main game panel that handles the game loop, rendering, and core game components.
+ * main.Main game panel that handles the game loop, rendering, and core game components.
  * This class extends JPanel and implements Runnable to manage the game thread.
  */
 public class Panel extends JPanel implements Runnable {
@@ -23,13 +21,13 @@ public class Panel extends JPanel implements Runnable {
     private static final int screenWidth = 800;
     private static final int screenHeight = 600;
 
-    /** Main thread */
+    /** main.Main thread */
     private Thread gameThread;
 
     /** Handles keyboard input */
     private final KeyHandler keyH = new KeyHandler();
 
-    private Frame frame = new Frame(10);
+    private Frame frame = new Frame(Main.slider.getValue());
 
     /**
      * Constructs a new Panel and initializes the game settings.
@@ -60,7 +58,7 @@ public class Panel extends JPanel implements Runnable {
     }
 
     /**
-     * Main game loop that handles timing and updates.
+     * main.Main game loop that handles timing and updates.
      * Implements a fixed time step game loop to maintain consistent game speed.
      */
     @Override
@@ -108,7 +106,7 @@ public class Panel extends JPanel implements Runnable {
         Graphics2D g2 = (Graphics2D) g;
 
         // Draw things here
-        for (Square square : frame) square.draw(g2);
+        frame.draw(g2);
 
         g2.dispose();
     }
